@@ -28,6 +28,10 @@ class ParkingLot {
             return -1;
         }
     }
+
+    leave(slotNumber) {
+        this.slots[slotNumber -1].deallocate();
+    }
 }
 
 module.exports = ParkingLot;

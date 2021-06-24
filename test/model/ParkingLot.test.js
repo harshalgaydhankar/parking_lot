@@ -1,3 +1,4 @@
+const Status = require("../../src/constants/Status");
 const {ParkingLot} = require('../../src/model');
 
 describe('ParkingLot', function () {
@@ -17,7 +18,16 @@ describe('ParkingLot', function () {
             parkingLot.slots.find(
                 (slot) => slot.car.registrationNumber === "KA-09-HH-0987").slotNumber
         ).toBe(nextSubsequentSlotNumber);
+        expect(parkingLot.slots[nextSubsequentSlotNumber - 1].status).toBe(Status.OCCUPIED);
+    });
 
+    it("leaves car from parking lot and makes the slot available", function () {
+        const parkingLot = new ParkingLot(3);
+        let slotNumberOfKA09HH0987 = parkingLot.availableSubsequentSlot();
+        parkingLot.park("KA-09-HH-0987");
+        expect(parkingLot.slots[slotNumberOfKA09HH0987 - 1].status).toBe(Status.OCCUPIED);
+        parkingLot.leave(slotNumberOfKA09HH0987);
+        expect(parkingLot.slots[slotNumberOfKA09HH0987 - 1].status).toBe(Status.VACANT);
     });
 
 });
