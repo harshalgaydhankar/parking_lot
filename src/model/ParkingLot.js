@@ -37,6 +37,13 @@ class ParkingLot {
         printMessage(`Registration number ${slotToVacant.car.registrationNumber} with Slot Number ${slotToVacant.slotNumber} is free with Charge ${generateBill(noOfHours)}`);
         this.slots[slotNumber -1].deallocate();
     }
+
+    status() {
+        printMessage("Slot No.  Registration No.");
+        this.slots.forEach((slot) =>{
+            printMessage(`${slot.slotNumber}   ${slot.car.registrationNumber}`);
+        });
+    }
 }
 
 module.exports = ParkingLot;

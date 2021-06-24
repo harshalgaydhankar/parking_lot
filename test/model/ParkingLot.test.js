@@ -46,4 +46,14 @@ describe('ParkingLot', function () {
         expect(console.log).toHaveBeenCalledWith("Sorry, parking lot is full");
     });
 
+    it("displays status of parking lot", function () {
+        console.log = jest.fn();
+        const parkingLot = new ParkingLot(2);
+        parkingLot.park("KA-09-HH-0987");
+        parkingLot.park("KA-09-HH-0999");
+        parkingLot.status();
+        expect(console.log).toBeCalledTimes(6);
+        expect(console.log).toHaveBeenCalledWith("Slot No.  Registration No.");
+    });
+
 });
