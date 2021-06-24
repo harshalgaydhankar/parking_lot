@@ -2,6 +2,7 @@ const Slot = require('./Slot');
 const Status = require("../constants/Status");
 const Car = require("./Car");
 const printMessage = require('../utils/printer');
+const generateBill = require('../utils/billing');
 
 class ParkingLot {
     constructor(numberOfSlots) {
@@ -31,9 +32,9 @@ class ParkingLot {
         }
     }
 
-    leave(slotNumber) {
+    leave(slotNumber, noOfHours) {
         const slotToVacant = this.slots[slotNumber -1];
-        printMessage(`Registration number ${slotToVacant.car.registrationNumber} with Slot Number ${slotToVacant.slotNumber} is free with Charge 30`);
+        printMessage(`Registration number ${slotToVacant.car.registrationNumber} with Slot Number ${slotToVacant.slotNumber} is free with Charge ${generateBill(noOfHours)}`);
         this.slots[slotNumber -1].deallocate();
     }
 }

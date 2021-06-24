@@ -30,7 +30,7 @@ describe('ParkingLot', function () {
         let slotNumberOfKA09HH0987 = parkingLot.availableSubsequentSlot();
         parkingLot.park("KA-09-HH-0987");
         expect(parkingLot.slots[slotNumberOfKA09HH0987 - 1].status).toBe(Status.OCCUPIED);
-        parkingLot.leave(slotNumberOfKA09HH0987);
+        parkingLot.leave(slotNumberOfKA09HH0987, 4);
         expect(parkingLot.slots[slotNumberOfKA09HH0987 - 1].status).toBe(Status.VACANT);
         expect(console.log).toBeCalledTimes(3);
         expect(console.log).toHaveBeenCalledWith('Registration number KA-09-HH-0987 with Slot Number 1 is free with Charge 30');
