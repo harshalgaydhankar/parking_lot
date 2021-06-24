@@ -1,0 +1,5 @@
+.DS_Store
+.rspec_status
+
+/node_modules
+.idea
