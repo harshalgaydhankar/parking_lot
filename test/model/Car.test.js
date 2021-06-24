@@ -1,4 +1,4 @@
-const Car = require('../../src/model/Car');
+const {Car} = require('../../src/model');
 
 describe('Car', function () {
     it("gets initialized with a registration number and color", function () {
