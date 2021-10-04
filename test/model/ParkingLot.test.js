@@ -53,7 +53,7 @@ describe('ParkingLot', function () {
         parkingLot.park("KA-09-HH-0999");
         parkingLot.status();
         expect(console.log).toBeCalledTimes(6);
-        expect(console.log).toHaveBeenCalledWith("Slot No.  Registration No.");
+        expect(console.log.mock.calls[4]).toEqual(["1   KA-09-HH-0987"]);
     });
 
 });
